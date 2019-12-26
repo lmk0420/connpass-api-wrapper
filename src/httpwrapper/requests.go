@@ -8,6 +8,7 @@ import (
     "time"
 )
 
+// DoRequest is creating http client and execute request
 func DoRequest(method, path string, values url.Values, body io.Reader) ([]byte, error) {
     client := &http.Client {
         Timeout: 30 * time.Second,

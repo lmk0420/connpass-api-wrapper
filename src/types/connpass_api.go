@@ -4,6 +4,7 @@ import (
 	"time"
 )
 
+// RequestParam is Request parameter of connpass-API
 type RequestParam struct {
 	EventID	int
 	Keyword	[]string
@@ -19,6 +20,7 @@ type RequestParam struct {
 	Format Format
 }
 
+// ResultSet is struct of connpass-API responce
 type ResultSet struct {
 	ResultsReturned int `json:"results_returned"`
 	Events []Event		`json:"events"`
@@ -26,6 +28,7 @@ type ResultSet struct {
 	ResultsAvailable int `json:"results_available"`
 }
 
+// Event is connpass-API response Series
 type Event struct {
 	EventURL      string `json:"event_url"`
 	EventTypes     string `json:"event_type"`
@@ -50,20 +53,22 @@ type Event struct {
 	Place            string    `json:"place"`
 }
 
+// Series is Series field of the response of connpass-API
 type Series struct {
 	URL   string `json:"url"`
 	ID    int    `json:"id"`
 	Title string `json:"title"`
 }
 
-
+// Format is the Series field of the response of connpass-API
 type Format string
 
-
+// connpass-API response format is json only
 const (
 	JSON Format = "json"
 )
 
+// NewRequestParam is constructor of RequestParam
 func NewRequestParam(eventid int, keyword, keywordor []string, ym, ymd []int, nickname, ownernickname []string,
 					 seriesid, start, order, count int, format string) *RequestParam{
 	param := new(RequestParam)
