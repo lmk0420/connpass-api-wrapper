@@ -16,7 +16,7 @@ type RequestParam struct {
 	Start int
 	Order int
 	Count int
-	Format string
+	Format Format
 }
 
 type ResultSet struct {
@@ -56,6 +56,14 @@ type Series struct {
 	Title string `json:"title"`
 }
 
+
+type Format string
+
+
+const (
+	JSON Format = "json"
+)
+
 func NewRequestParam(eventid int, keyword, keywordor []string, ym, ymd []int, nickname, ownernickname []string,
 					 seriesid, start, order, count int, format string) *RequestParam{
 	param := new(RequestParam)
@@ -70,7 +78,7 @@ func NewRequestParam(eventid int, keyword, keywordor []string, ym, ymd []int, ni
 	param.Start = start
 	param.Order = order
 	param.Count = count
-	param.Format = format
+	param.Format = JSON
 
 	return param
 }
